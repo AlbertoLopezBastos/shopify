@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "start": "npx tailwindcss -i ./src/tailwind.css -o ./assets/application.css" 
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.2.4"
+  }
+}
+
