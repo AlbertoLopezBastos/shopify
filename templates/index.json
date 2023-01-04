@@ -1,0 +1,13 @@
+{
+	"name": "Template Index",
+	"sections": {
+		"featured-collection": {
+			"type": "featured-collection",
+			"settings": {
+				"featured_collection" : "all"
+			}
+		}				
+	},
+	"order": ["featured-collection"]
+
+}
