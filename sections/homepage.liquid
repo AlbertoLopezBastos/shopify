@@ -1,8 +1,0 @@
-<div class="homepage">
-  {% for collection in collections %}
-    {% for product in collection.products %}
-      <div class="py-4">{{ product.title }}</div>
-      <a href="{{ product.url }}" class="p-4 text-center border border-black rounded-lg text-white bg-gray-500">See product</a>
-    {% endfor %}
-  {% endfor %}
-</div>
