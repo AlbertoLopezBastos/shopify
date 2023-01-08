@@ -1,6 +1,8 @@
 {% case media.media_type %}
   {% when 'image' %}
   <img
+    width=""
+    height=""
     class="w-full h-full object-cover"
     loading="lazy"
     src="{{ media.url | img_url: 'large'}}"

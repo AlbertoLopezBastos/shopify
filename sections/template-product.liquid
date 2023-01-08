@@ -170,7 +170,7 @@
     onVariantChange() {
       this.getSelectedOptions();
       this.getSelectedVariant();
-      if(this.currentVariant){
+      if (this.currentVariant) {
         this.updateURL();
         this.updateFormID();
         this.updatePrice();
@@ -187,43 +187,53 @@
     }
 
     getSelectedVariant() {
-      this.currentVariant = this.getVariantJSON().find(
-        (variant) => {
-          const findings = !variant.options.map(
-            (option, index) => { 
-              return this.options[index] === option; 
-            }
-          ).includes(false);
+      this.currentVariant = this.getVariantJSON().find((variant) => {
+        const findings = !variant.options.map((option, index) => {
+          return this.options[index] === option;
+        }).includes(false);
 
-          if(findings) return variant;
-        }
-      );
+        if (findings) 
+          return variant;
+        
+      });
     }
 
-    updateURL(){
-      if(!this.currentVariant){
+    updateURL() {
+      if (!this.currentVariant) {
         return
       }
 
-      window.history.replaceState({},'', `${this.dataset.url}?variant=${this.currentVariant.id}`);
+      window.history.replaceState({}, '', `${
+        this.dataset.url
+      }?variant=${
+        this.currentVariant.id
+      }`);
     }
 
-    updateFormID(){
+    updateFormID() {
       const form_input = document.querySelector('#product-form').querySelector('input[name="id"]');
       form_input.value = this.currentVariant.id;
     }
 
     updatePrice() {
-      fetch(`${this.dataset.url}?variant=${this.currentVariant.id}&section_id=${this.dataset.section}`)
-      .then(response => response.text())
-      .then(responseText => {
-        const id = `price-${this.dataset.section}`
+      fetch(`${
+        this.dataset.url
+      }?variant=${
+        this.currentVariant.id
+      }&section_id=${
+        this.dataset.section
+      }`).then(response => response.text()).then(responseText => {
+        const id = `price-${
+          this.dataset.section
+        }`
         const html = new DOMParser().parseFromString(responseText, 'text/html');
-        
+
         const oldPrice = document.getElementById(id);
         const newPrice = html.getElementById(id);
 
-        if(oldPrice && newPrice) oldPrice.innerHTML = newPrice.innerHTML;
+        if (oldPrice && newPrice) 
+          oldPrice.innerHTML = newPrice.innerHTML;
+        
 
       })
     }
