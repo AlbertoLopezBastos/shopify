@@ -151,8 +151,18 @@
 
               <div class="flex flex-row gap-2">
                 <button x-on:click="address_{{ address.id }} = true" class="w-full text-xs text-white bg-gray-700 hover:bg-gray-900 font-medium py-2">Edit</button>
-                <button class="w-full text-xs font-medium text-gray-700 border py-2">Delete</button>
+                <button
+                  data-delete-address
+                  data-url="{{ address.url }}"
+                  class="w-full text-xs font-medium text-gray-700 border py-2">Delete</button>
               </div>
+
+              <form action="{{ address.url }}" method="post">
+                <input
+                  type="hidden"
+                  name="_method"
+                  value="delete">
+              </form>
             </div>
             <div x-show="address_{{ address.id }}" class="w-full h-full fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto z-50">
               <div class="relative max-w-md mx-auto bg-white border top-20 bottom-20 p-4">
@@ -292,7 +302,29 @@
     constructor() {
       this.initCustomerAddress();
       this.customerAddressesSelector();
+      this.initDeleteAddressesButtons();
     };
+
+    initDeleteAddressesButtons() {
+      const deleteButtons = document.querySelectorAll('button[data-delete-address]');
+
+      if (deleteButtons.length < 1) {
+        return;
+      }
+
+      deleteButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          var url = this.dataset.url;
+
+          var confirmation = window.confirm("Do you really wish to delete this address?");
+
+          if (confirmation) {
+            document.querySelector(`form[action="${url}"]`).submit();
+          }
+        })
+      })
+
+    }
 
     initCustomerAddress() {
 
