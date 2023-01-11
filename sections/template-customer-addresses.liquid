@@ -1,4 +1,7 @@
-<div class="max-w-6xl mx-auto px-4 py-12" x-data="{ new_address: false }">
+<div
+  class="max-w-6xl mx-auto px-4 py-12"
+  x-data="{ new_address: false }"
+  x-cloak>
   <div class="flex flex-col md:flex-row items-center justify-between my-5 gap-4">
     <h1 class="text-2xl font-bold text-gray-700">Addresses</h1>
     <button
@@ -22,7 +25,7 @@
             type="text"
             name="address[first_name]"
             id="address_fname_{{ form.id }}"
-            value="{{ form.first_name  }}"
+            value="{{ form.first_name }}"
             class="w-full text-gray-700 border px-4 py-3 hover:outline-none">
         </div>
 
@@ -32,7 +35,7 @@
             type="text"
             name="address[last_name]"
             id="address_lname_{{ form.id }}"
-            value="{{ form.last_name  }}"
+            value="{{ form.last_name }}"
             class="w-full text-gray-700 border px-4 py-3 hover:outline-none">
         </div>
 
@@ -178,7 +181,7 @@
                       type="text"
                       name="address[first_name]"
                       id="address_fname_{{ form.id }}"
-                      value="{{ form.first_name  }}"
+                      value="{{ form.first_name }}"
                       class="w-full text-gray-700 border px-4 py-3 hover:outline-none">
                   </div>
 
@@ -188,7 +191,7 @@
                       type="text"
                       name="address[last_name]"
                       id="address_lname_{{ form.id }}"
-                      value="{{ form.last_name  }}"
+                      value="{{ form.last_name }}"
                       class="w-full text-gray-700 border px-4 py-3 hover:outline-none">
                   </div>
 

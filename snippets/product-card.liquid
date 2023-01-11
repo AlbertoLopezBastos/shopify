@@ -5,10 +5,10 @@
         <div class="h-80 overflow-hidden">
           <img
             class="w-full h-full object-cover transition duration-1000 ease-in-out hover:scale-105 transform"
-            width="0"
-            height="0"
+            width=""
+            height=""
             loading="lazy"
-            src="{{ product.featured_image | img_url: 'medium' }}"
+            src="{{ product.featured_image | img_url: 'large' }}"
             alt="{{ product.featured_image.alt }}">
         </div>
       {% else %}
